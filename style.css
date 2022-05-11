@@ -1,8 +1,85 @@
-thead {
-    background-color: brown;
+body {
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: normal;
+}
+
+.visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.page-header {
+    box-shadow: 1px 1px 40px;
+}
+
+.page-header .container {
+    padding: 20px;
+}
+
+
+main {
+    background-color: #f0e9ed;
+}
+
+main .container {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.answers table {
+    width: 100%;
+}
+
+.answers thead {
+    background-color: #25786e;
     color: white;
 }
 
-tbody {
-    background-color: beige;
+.answers tbody tr:nth-of-type(2n) {
+    background-color: white;
 }
+
+.answers td {
+    padding: 10px;
+    border: 1px solid white;
+    min-width: 120px;
+}
+
+.settings {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    border: 1px white solid;
+}
+
+.settings h2 {
+    background-color: #25786e;
+    color: white;
+    font-size: 100%;
+    padding: 10px;
+}
+
+.settings .container {
+    padding: 10px;
+}
+
+.settings label {
+    display: block;
+    margin-bottom: 5px;
+}
+
