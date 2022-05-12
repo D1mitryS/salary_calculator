@@ -1,16 +1,21 @@
 const calculatorForm = document.querySelector('#calculator-form');
-const salaryInput = document.querySelector("#salary");
+const presetSelect = document.querySelector("#preset-select");
 const salaryOutput = document.querySelector("#salary-output");
+const salaryInput = document.querySelector("#salary");
+const nologCheckbox = document.querySelector("#nolog");
 const hoursInput = document.querySelector("#hours");
 const daysInput = document.querySelector("#days");
-const sleepHoursInput = document.querySelector("#sleep-hours")
 const nonPaidHoursInput = document.querySelector("#non-paid-hours");
+const sleepHoursInput = document.querySelector("#sleep-hours");
+const bonusInput = document.querySelector("#bonus");
+const fineInput = document.querySelector("#fine");
 const submitButton = document.querySelector("#submit");
 
+
 const month = 31;
+const day = 24;
 const week = 7;
 const weeksAtMount = month / week;
-const day = 24;
 
 
 const answerSleepHours = document.querySelector("#answer-1");
@@ -32,24 +37,105 @@ const answerFreeHoursOnWeek = document.querySelector("#answer13");
 const answerFreeHoursOnMounth = document.querySelector("#answer14");
 
 
+const presets = [{
+        name: 'планктон',
+        salary: 5,
+        workHours: 8,
+        workDays: 5,
+        nonPaid: 1,
+        bonus: 0,
+        fine: 0,
+        sleepHours: 8
+    },
+    {
+        name: 'общепит',
+        salary: 2.5,
+        workHours: 12,
+        workDays: 4,
+        nonPaid: 2,
+        bonus: 600,
+        fine: 100,
+        sleepHours: 5
+    },
+    {
+        name: 'студент',
+        salary: 3.5,
+        workHours: 6,
+        workDays: 4,
+        nonPaid: 1,
+        bonus: 0,
+        fine: 0,
+        sleepHours: 5
+    },
+    {
+        name: 'живу с мамой',
+        salary: 3.5,
+        workHours: 4,
+        workDays: 5,
+        nonPaid: 1,
+        bonus: 0,
+        fine: 0,
+        sleepHours: 8
+    },
+    {
+        name: 'тунеядец',
+        salary: 0,
+        workHours: 0,
+        workDays: 0,
+        nonPaid: 24,
+        bonus: 0,
+        fine: 65,
+        sleepHours: 8
+    }
+]
+
+presetSelect.addEventListener("change", () => {
+    const presetValue = presetSelect.value;
+
+    if (presetValue !== 'standard') {
+        salaryInput.value = presets[presetValue].salary;
+        salaryOutput.value = salaryInput.value
+        hoursInput.value = presets[presetValue].workHours;
+        daysInput.value = presets[presetValue].workDays;
+        nonPaidHoursInput.value = presets[presetValue].nonPaid;
+        bonusInput.value = presets[presetValue].bonus;
+        fineInput.value = presets[presetValue].fine;
+        sleepHoursInput.value = presets[presetValue].sleepHours;
+    }
+})
+
+
 salaryInput.addEventListener("input", () => {
     salaryOutput.textContent = salaryInput.value;
 })
 
-const turnToNumber = val => {
+
+const valToNum = val => {
     return (val !== "") ? Number.parseInt(val, 10) : 0;
 }
+
+console.log(nologCheckbox.checked)
 
 calculatorForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    const sleepHoursNum = turnToNumber(sleepHoursInput.value);
-    const workHoursNum = turnToNumber(hoursInput.value);
-    const workDaysNum = turnToNumber(daysInput.value);
-    const nonPaidHoursNum = turnToNumber(nonPaidHoursInput.value)
+    let salaryNum = salaryInput.value;
 
-    const salaryNum = salaryInput.value
+    if (nologCheckbox.checked) {
+        null;
+    }
+    else {
+        salaryNum = salaryNum / 2;
+    }
+
+    const workHoursNum = valToNum(hoursInput.value);
+    const workDaysNum = valToNum(daysInput.value);
+    const nonPaidHoursNum = valToNum(nonPaidHoursInput.value);
+    const bonusNum = valToNum(bonusInput.value);
+    const fineNum = valToNum(fineInput.value)
+    const sleepHoursNum = valToNum(sleepHoursInput.value);
     const activeHoursNum = day - sleepHoursNum;
+
 
     answerSleepHours.textContent = sleepHoursNum + " ч."
     answerActiveHours.textContent = activeHoursNum + " ч.";
@@ -59,15 +145,15 @@ calculatorForm.addEventListener("submit", (evt) => {
     answerNonPaidHours.textContent = nonPaidHoursNum + " ч.";
 
     answerWorkHoursInWeek.textContent = workHoursInWeek(workHoursNum, workDaysNum) + " ч.";
-    answerWorkHoursInMounth.textContent =  Math.round(workHoursInMonth(workHoursNum, workDaysNum)) + " ч.";
+    answerWorkHoursInMounth.textContent = Math.round(workHoursInMonth(workHoursNum, workDaysNum)) + " ч.";
     answerSalaryInDay.textContent = Math.round(salaryInDay(salaryNum, workHoursNum)) + " руб.";
     answerSalaryInWeek.textContent = Math.round(salaryInWeek(salaryNum, workHoursNum, workDaysNum)) + " руб.";
     answerSalaryInMounth.textContent = Math.round(salaryInMount(salaryNum, workHoursNum, workDaysNum)) + " руб.";
     answerFreeDaysInWeek.textContent = freeDaysInWeek(workDaysNum) + " дн.";
     answerFreeDaysInMounth.textContent = Math.floor(freeDaysInMount(workDaysNum)) + " дн.";
-    answerFreeHoursOnWorkDay.textContent = freeHoursOnWorkDay(activeHoursNum, workHoursNum, nonPaidHoursNum )  + " ч.";
-    answerFreeHoursOnWeek.textContent = FreeHoursOnWeek(activeHoursNum, workHoursNum, nonPaidHoursNum, workDaysNum)  + " ч.";
-    answerFreeHoursOnMounth.textContent = Math.round(FreeHoursOnMount(activeHoursNum, workHoursNum, nonPaidHoursNum, workDaysNum))  + " ч.";
+    answerFreeHoursOnWorkDay.textContent = freeHoursOnWorkDay(activeHoursNum, workHoursNum, nonPaidHoursNum) + " ч.";
+    answerFreeHoursOnWeek.textContent = FreeHoursOnWeek(activeHoursNum, workHoursNum, nonPaidHoursNum, workDaysNum) + " ч.";
+    answerFreeHoursOnMounth.textContent = Math.round(FreeHoursOnMount(activeHoursNum, workHoursNum, nonPaidHoursNum, workDaysNum)) + " ч.";
 })
 
 
@@ -103,10 +189,10 @@ const freeHoursOnWorkDay = (activeHours, workHours, nonPaidHours) => {
     return activeHours - workHours - nonPaidHours
 }
 
-const FreeHoursOnWeek = (activeHours, workHours, nonPaidHours , workDays) => {
+const FreeHoursOnWeek = (activeHours, workHours, nonPaidHours, workDays) => {
     return (activeHours * week) - ((workHours + nonPaidHours) * workDays)
 }
 
-const FreeHoursOnMount = (activeHours, workHours, nonPaidHours , workDays) => {
+const FreeHoursOnMount = (activeHours, workHours, nonPaidHours, workDays) => {
     return ((activeHours * week) * weeksAtMount) - (((workHours + nonPaidHours) * workDays) * weeksAtMount);
 }

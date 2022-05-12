@@ -1,5 +1,5 @@
 body {
-    font-size: 20px;
+    font-size: larger;
     font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
@@ -29,7 +29,6 @@ h3 {
     padding: 20px;
 }
 
-
 main {
     background-color: #f0e9ed;
 }
@@ -37,7 +36,7 @@ main {
 main .container {
     padding: 25px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 25px;
 }
 
@@ -62,8 +61,6 @@ main .container {
 
 .settings {
     align-self: start;
-    display: flex;
-    flex-direction: column;
     border: 1px white solid;
 }
 
@@ -74,12 +71,56 @@ main .container {
     padding: 10px;
 }
 
-.settings .container {
-    padding: 10px;
+.form-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .settings label {
-    display: block;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.settings label:nth-of-type(1) {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.settings input:focus {
+    background-color: #25786e;
+    color: white;
+}
+
+.settings input[type="range"] {
+    background-color: #fff;
+    -webkit-appearance: none;
+    width: 150px;
+    height:15px;
+}
+
+.settings input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+   background-color: #25786e;
+   opacity: 0.9;
+   width: 10px;
+   height: 26px;
+}
+
+.settings input[type="checkbox"] {
+}
+
+.settings input[type="number"] {
+    width: 50px;
+}
+
+.settings button {
+    align-self: flex-end;
+    margin-top: 15px;
+    width: 125px;
+    height: 30px;
+    font-size: 1em;
 }
 

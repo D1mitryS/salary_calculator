@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Калькулятор для тунеядцев">
@@ -8,17 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <title>Калькулятор РАБочего времени</title>
 </head>
-
 <body>
     <header class="page-header">
         <div class="container">
             <h1>Калькулятор РАБочего времени</h1>
         </div>
     </header>
-
     <main>
         <div class="container">
             <section class="answers">
+                <h2 class="visually-hidden">Таблица с данными</h2>
                 <table>
                     <thead>
                         <tr>
@@ -96,31 +94,54 @@
             </section>
             <section class="settings">
                 <h2>Исходные данные</h2>
-                <div class="container">
                     <form name="calculator" action="index.html" method="post" id="calculator-form">
-                        <label>
-                            <span>Рабочих часов:</span>
-                            <input type="number" min="0" max="12" value="8" id="hours" name="calculator">
-                        </label>
-                        <label>
-                            <span>Рабочих дней:</span>
-                            <input type="number" min="0" max="7" value="5" id="days" name="calculator">
-                        </label>
-                        <label>
-                            <span>Часы сна:</span>
-                            <input type="number" id="sleep-hours" min="0" max="24" value="8" name="calculator">
-                        </label>
-                        <label>
-                            <span>Неоплачиваемые часы:</span>
-                            <input type="number" id="non-paid-hours" min="0" max="24" value="1" name="calculator">
-                        </label>
-                        <label>
-                            <span>Ставка: <output id="salary-output">3.5</output> </span>
-                            <input type="range" id="salary" min="2.5" max="20" step="0.1" value="3.5" name="calculator">
-                        </label>
-                        <button type="submit" id="submit" name="calculator">Рассчитать</button>
+                        <div class="form-container">
+                            <label>
+                                <span>Пресет</span>
+                                <select id="preset-select">
+                                    <option selected value="standard">Выбрать пресет</option>
+                                    <option value="0">Офисный планктон</option>
+                                    <option value="1">Работник общепита</option>
+                                    <option value="2">Студент</option>
+                                    <option value="3">Живу с мамой</option>
+                                    <option value="4">Тунеядец</option>
+                                </select>
+                            </label>
+                            <label>
+                                <span>Ставка: <output id="salary-output">0</output> </span>
+                                <input type="range" id="salary" min="0" max="15" step="0.1" value="0" name="calculator">
+                            </label>
+                            <label>
+                                <span>С учётом nologov</span>
+                                <input type="checkbox" checked id="nolog" name="calculator">
+                            </label>
+                            <label>
+                                <span>Рабочие часы:</span>
+                                <input type="number" min="0" max="12" id="hours" name="calculator">
+                            </label>
+                            <label>
+                                <span>Рабочие дни:</span>
+                                <input type="number" min="0" max="7" id="days" name="calculator">
+                            </label>
+                            <label>
+                                <span>Неоплачиваемые часы:</span>
+                                <input type="number" id="non-paid-hours" min="0" max="24" name="calculator">
+                            </label>
+                            <label>
+                                <span>Процент от продаж:</span>
+                                <input type="number" id="bonus" min="0" max="2000" name="calculator">
+                            </label>
+                            <label>
+                                <span>Штрафы:</span>
+                                <input type="number" id="fine" min="0" max="2000" name="calculator">
+                            </label>
+                            <label>
+                                <span>Часы сна:</span>
+                                <input type="number" id="sleep-hours" min="0" max="24" name="calculator">
+                            </label>
+                            <button type="submit" id="submit" name="calculator">Рассчитать</button>
+                        </div>
                     </form>
-                </div>
             </section>
         </div>
     </main>
