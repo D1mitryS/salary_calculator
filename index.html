@@ -91,13 +91,13 @@
                             <td>Полная з/п в неделю 
                                 <span class="extended-description">(без учёта налога)</span>
                             </td>
-                            <td id="answer-taxed-full-salary-at-week"></td>
+                            <td id="answer-untaxed-full-salary-at-week"></td>
                         </tr>
                         <tr>
                             <td>Полная з/п в месяц 
                                 <span class="extended-description">(без учёта налога)</span>
                             </td>
-                            <td id="answer-taxed-full-salary-at-month"></td>
+                            <td id="answer-untaxed-full-salary-at-month"></td>
                         </tr>
                         <tr>
                             <td>Время работы в день</td>
@@ -148,7 +148,7 @@
                             <td id="answer-freehours-on-month"></td>
                         </tr>
                         <tr>
-                            <td>Время бодрствония</td>
+                            <td>Время бодрствования</td>
                             <td id="answer-active-hours"></td>
                         </tr>
                         <tr>
@@ -199,19 +199,19 @@
                             <p>Неоплачиваемые часы - 
                                 <span class="extended-description">(обед, дорога, пр.)</span>
                             </p>
-                            <input type="number" id="non-paid-hours" min="0" max="10" name="calculator">
+                            <input type="number" id="non-paid-hours" min="0" max="24" name="calculator">
                         </label>
                         <label>
                             <p>Премия - 
                                 <span class="extended-description">(процент от продаж, чаевые, пр.)</span>
                             </p>
-                            <input type="number" id="bonus" min="0" max="1000" name="calculator">
+                            <input type="number" id="bonus" min="0" max="2000" name="calculator">
                         </label>
                         <label>
                             <p>Штрафы - 
                                 <span class="extended-description">(вычеты, просрочка, пр.)</span>
                             </p>
-                            <input type="number" id="fine" min="0" max="1000" name="calculator">
+                            <input type="number" id="fine" min="0" max="2000" name="calculator">
                         </label>
                         <label>
                             <p>Часы сна - </p>
