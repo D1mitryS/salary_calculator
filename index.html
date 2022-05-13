@@ -28,11 +28,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Ставка с учётом nologa</td>
+                            <td>
+                                Оклад в час <span class="extended-description">(с учётом nologa)</span>
+                            </td>
                             <td id="answer-salary-taxed"></td>
                         </tr>
                         <tr>
-                            <td>Ставка (без налога)</td>
+                            <td>
+                                Оклад в час <span class="extended-description">(без учёта налога)</span>
+                            </td>
                             <td id="answer-salary-untaxed"></td>
                         </tr>
                         <tr>
@@ -48,16 +52,52 @@
                             <td id="answer-salary-at-month"></td>
                         </tr>
                         <tr>
-                            <td>Оклад в день (без налога)</td>
+                            <td>Полная з/п в день </td>
+                            <td id="answer-full-salary-at-day"></td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в неделю</td>
+                            <td id="answer-full-salary-at-week"></td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в месяц</td>
+                            <td id="answer-full-salary-at-month"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Оклад в день <span class="extended-description">(без учёта налога)</span>
+                            </td>
                             <td id="answer-untaxed-salary-at-day"></td>
                         </tr>
                         <tr>
-                            <td>Оклад в неделю (без налога)</td>
+                            <td>
+                                Оклад в неделю <span class="extended-description">(без учёта налога)</span>
+                            </td>
                             <td id="answer-untaxed-salary-at-week"></td>
                         </tr>
                         <tr>
-                            <td>Оклад в месяц (без налога)</td>
+                            <td>
+                                Оклад в месяц <span class="extended-description">(без учёта налога)</span>
+                            </td>
                             <td id="answer-untaxed-salary-at-month"></td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в день 
+                                <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td id="answer-untaxed-full-salary-at-day"></td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в неделю 
+                                <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td id="answer-taxed-full-salary-at-week"></td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в месяц 
+                                <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td id="answer-taxed-full-salary-at-month"></td>
                         </tr>
                         <tr>
                             <td>Время работы в день</td>
@@ -80,11 +120,11 @@
                             <td id="answer-work-days-at-month"></td>
                         </tr>
                         <tr>
-                            <td>Выходные в неделю</td>
+                            <td>Выходных дней в неделю</td>
                             <td id="answer-freedays-in-week"></td>
                         </tr>
                         <tr>
-                            <td>Выходные в месяц</td>
+                            <td>Выходных дней в месяц</td>
                             <td id="answer-freedays-in-month"></td>
                         </tr>
                         <tr>
@@ -96,15 +136,19 @@
                             <td id="answer-freehours-on-workday"></td>
                         </tr>
                         <tr>
-                            <td>Свободные часы в неделю</td>
+                            <td>
+                                Свободные часы в неделю <span class="extended-description">(с учётом сна, рабочих и выходных дней)</span>
+                            </td>
                             <td id="answer-freehours-on-week"></td>
                         </tr>
                         <tr>
-                            <td>Свободные часы в месяц</td>
+                            <td>
+                                Свободные часы в месяц <span class="extended-description">(с учётом сна, рабочих и выходных дней)</span>
+                            </td>
                             <td id="answer-freehours-on-month"></td>
                         </tr>
                         <tr>
-                            <td>Активные часы в день</td>
+                            <td>Время бодрствония</td>
                             <td id="answer-active-hours"></td>
                         </tr>
                         <tr>
@@ -119,7 +163,7 @@
                 <form name="calculator" action="index.html" method="post" id="calculator-form">
                     <div class="form-container">
                         <label>
-                            <span class="description">Пресет</span>
+                            <p>Пресет</p>
                             <select id="preset-select">
                                 <option selected value="standard">Выбрать пресет</option>
                                 <option value="0">Офисный планктон</option>
@@ -130,7 +174,7 @@
                             </select>
                         </label>
                         <label>
-                            <span class="description">Ставка - </span>
+                            <p>Ставка - </p>
                             <div class="range-container">
                                 <output id="salary-output">0</output>
                                 <input type="range" id="salary" min="0" max="15" step="0.25" value="0"
@@ -138,31 +182,39 @@
                             </div>
                         </label>
                         <label>
-                            <span class="description">С учётом НДФЛ - <i>13%</i></span>
+                            <p>С учётом НДФЛ - 
+                                <span class="extended-description">13%</span>
+                            </p>
                             <input type="checkbox" checked id="tax" name="calculator">
                         </label>
                         <label>
-                            <span class="description">Рабочие часы -</span>
+                            <p>Рабочие часы -</p>
                             <input type="number" min="0" max="12" id="hours" name="calculator">
                         </label>
                         <label>
-                            <span class="description">Рабочие дни -</span>
+                            <p>Рабочие дни -</p>
                             <input type="number" min="0" max="7" id="days" name="calculator">
                         </label>
                         <label>
-                            <span class="description">Неоплачиваемые часы - <i>(обед, дорога, пр.)</i></span>
+                            <p>Неоплачиваемые часы - 
+                                <span class="extended-description">(обед, дорога, пр.)</span>
+                            </p>
                             <input type="number" id="non-paid-hours" min="0" max="10" name="calculator">
                         </label>
                         <label>
-                            <span class="description">Премия - <i>(процент от продаж, чаевые, пр.)</i></span>
+                            <p>Премия - 
+                                <span class="extended-description">(процент от продаж, чаевые, пр.)</span>
+                            </p>
                             <input type="number" id="bonus" min="0" max="1000" name="calculator">
                         </label>
                         <label>
-                            <span class="description">Штрафы - <i>(вычеты, просрочка, пр.)</i></span>
+                            <p>Штрафы - 
+                                <span class="extended-description">(вычеты, просрочка, пр.)</span>
+                            </p>
                             <input type="number" id="fine" min="0" max="1000" name="calculator">
                         </label>
                         <label>
-                            <span class="description">Часы сна - </span>
+                            <p>Часы сна - </p>
                             <input type="number" id="sleep-hours" min="0" max="14" name="calculator">
                         </label>
                         <button type="submit" id="submit" name="calculator">Рассчитать</button>

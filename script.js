@@ -25,9 +25,17 @@ const answerSalaryInDay = document.querySelector("#answer-salary-at-day");
 const answerSalaryInWeek = document.querySelector("#answer-salary-at-week");
 const answerSalaryInMonth = document.querySelector("#answer-salary-at-month");
 
+const answerFullSalaryInDay = document.querySelector("#answer-full-salary-at-day");
+const answerFullSalaryInWeek = document.querySelector("#answer-full-salary-at-week");
+const answerFullSalaryInMonth = document.querySelector("#answer-full-salary-at-month");
+
 const answerSalaryInDayUntaxed = document.querySelector("#answer-untaxed-salary-at-day");
 const answerSalaryInWeekUntaxed = document.querySelector("#answer-untaxed-salary-at-week");
 const answerSalaryInMonthUntaxed = document.querySelector("#answer-untaxed-salary-at-week");
+
+const answerFullSalaryInDayUntaxed = document.querySelector("#answer-untaxed-full-salary-at-day");
+const answerFullSalaryInWeekUntaxed = document.querySelector("#answer-untaxed-full-salary-at-week");
+const answerFullSalaryInMonthUntaxed = document.querySelector("#answer-untaxed-full-salary-at-month");
 
 const answerWorkHoursInDay = document.querySelector("#answer-work-hours-at-day");
 const answerWorkHoursInWeek = document.querySelector("#answer-work-hours-at-week");
@@ -157,13 +165,21 @@ calculatorForm.addEventListener("submit", (evt) => {
     }
 
 
-    answerSalaryInDay.textContent = Math.round(getSalaryInDay(salary, workHours)) + " руб.";
-    answerSalaryInWeek.textContent = Math.round(getSalaryInWeek(salary, workHours, workDays)) + " руб.";
-    answerSalaryInMonth.textContent = Math.round(getSalaryInMount(salary, workHours, workDays)) + " руб.";
+    answerSalaryInDay.textContent = getSalaryInDay(salary, workHours) + " руб.";
+    answerSalaryInWeek.textContent = getSalaryInWeek(salary, workHours, workDays) + " руб.";
+    answerSalaryInMonth.textContent = getSalaryInMount(salary, workHours, workDays) + " руб.";
+
+    // answerFullSalaryInDay.textContent =
+    // answerFullSalaryInWeek.textContent =
+    // answerFullSalaryInMonth.textContent = 
 
     // answerSalaryInDayUntaxed = 
     // answerSalaryInWeekUntaxed = 
     // answerSalaryInMonthUntaxed = 
+
+    // answerFullSalaryInDayUntaxed.textContent =
+    // answerFullSalaryInWeekUntaxed.textContent =
+    // answerFullSalaryInMonthUntaxed.textContent = 
 
     answerWorkHoursInDay.textContent = workHours + " ч.";
     answerWorkHoursInWeek.textContent = getWorkHoursInWeek(workHours, workDays) + " ч.";
@@ -195,14 +211,6 @@ const getTaxed = num => {
 }
 
 
-const getWorkHoursInWeek = (workHours, workDays) => {
-    return workHours * workDays;
-}
-
-const getWorkHoursInMonth = (workHours, workDays) => {
-    return (workHours * workDays) * weeksAtMount;
-}
-
 const getSalaryInDay = (salaryInHour, workHours) => {
     return salaryInHour * workHours;
 }
@@ -214,6 +222,18 @@ const getSalaryInWeek = (salaryInHour, workHours, workDays) => {
 const getSalaryInMount = (salaryInHour, workHours, workDays) => {
     return ((salaryInHour * workHours) * workDays) * weeksAtMount;
 }
+
+
+const getWorkHoursInWeek = (workHours, workDays) => {
+    return workHours * workDays;
+}
+
+const getWorkHoursInMonth = (workHours, workDays) => {
+    return (workHours * workDays) * weeksAtMount;
+}
+
+
+
 
 const getFreeDaysInWeek = workDays => {
     return week - workDays;
