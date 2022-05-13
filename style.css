@@ -75,17 +75,18 @@ main .container {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    background-color: #f0e9ed;
 }
 
 .settings label {
-    margin-bottom: 15px;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 }
 
 .settings label:nth-of-type(1) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -114,6 +115,11 @@ main .container {
 
 .settings input[type="number"] {
     width: 50px;
+}
+
+.settings .description i {
+    font-size: 0.7em;
+    color: grey;
 }
 
 .settings button {
