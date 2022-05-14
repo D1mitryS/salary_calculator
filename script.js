@@ -187,42 +187,42 @@ calculatorForm.addEventListener("submit", (evt) => {
     };
 
 
-    answerDaySalary.textContent = getDaySalary(salaryTransformed, workHours) + " руб.";
-    answerWeekSalary.textContent = getWeekSalary(salaryTransformed, workHours, workDays) + " руб.";
-    answerMonthSalary.textContent = getMonthSalary(salaryTransformed, workHours, workDays) + " руб.";
+    answerDaySalary.textContent = getDaySalary(salaryTransformed, workHours);
+    answerWeekSalary.textContent = getWeekSalary(salaryTransformed, workHours, workDays);
+    answerMonthSalary.textContent = getMonthSalary(salaryTransformed, workHours, workDays);
 
-    answerDayFullSalary.textContent = getFullSalary(getDaySalary(salaryTransformed, workHours), getDayBonus(totalBonus, workDays)) + " руб.";
-    answerWeekFullSalary.textContent = getFullSalary(getWeekSalary(salaryTransformed, workHours, workDays), getWeekBonus(totalBonus, workDays)) + " руб.";
-    answerMonthFullSalary.textContent = getFullSalary(getMonthSalary(salaryTransformed, workHours, workDays), totalBonus) + " руб.";
+    answerDayFullSalary.textContent = getFullSalary(getDaySalary(salaryTransformed, workHours), getDayBonus(totalBonus, workDays));
+    answerWeekFullSalary.textContent = getFullSalary(getWeekSalary(salaryTransformed, workHours, workDays), getWeekBonus(totalBonus, workDays));
+    answerMonthFullSalary.textContent = getFullSalary(getMonthSalary(salaryTransformed, workHours, workDays), totalBonus);
 
-    answerDaySalaryUntaxed.textContent = getSalaryUntaxed(getDaySalary(salaryTransformed, workHours)) + " руб.";
-    answerWeekSalaryUntaxed.textContent = getSalaryUntaxed(getWeekSalary(salaryTransformed, workHours, workDays)) + " руб.";
-    answerMonthSalaryUntaxed.textContent = getSalaryUntaxed(getMonthSalary(salaryTransformed, workHours, workDays)) + " руб.";
+    answerDaySalaryUntaxed.textContent = getSalaryUntaxed(getDaySalary(salaryTransformed, workHours));
+    answerWeekSalaryUntaxed.textContent = getSalaryUntaxed(getWeekSalary(salaryTransformed, workHours, workDays));
+    answerMonthSalaryUntaxed.textContent = getSalaryUntaxed(getMonthSalary(salaryTransformed, workHours, workDays));
 
-    answerDayFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getDaySalary(salaryTransformed, workHours), getDayBonus(totalBonus, workDays)) + " руб.";
-    answerWeekFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getWeekSalary(salaryTransformed, workHours, workDays), getWeekBonus(totalBonus, workDays)) + " руб.";
-    answerMonthFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getMonthSalary(salaryTransformed, workHours, workDays), totalBonus) + " руб.";
+    answerDayFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getDaySalary(salaryTransformed, workHours), getDayBonus(totalBonus, workDays));
+    answerWeekFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getWeekSalary(salaryTransformed, workHours, workDays), getWeekBonus(totalBonus, workDays));
+    answerMonthFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getMonthSalary(salaryTransformed, workHours, workDays), totalBonus);
 
-    answerDayWorkHours.textContent = workHours + " ч.";
-    answerWeekWorkHours.textContent = getWeekWorkHours(workHours, workDays) + " ч.";
-    answerMonthWorkHours.textContent = getMonthWorkHours(workHours, workDays) + " ч.";
+    answerDayWorkHours.textContent = workHours;
+    answerWeekWorkHours.textContent = getWeekWorkHours(workHours, workDays);
+    answerMonthWorkHours.textContent = getMonthWorkHours(workHours, workDays);
 
-    answerWeekWorkDays.textContent = workDays + " дн.";
-    answerMonthkWorkDays.textContent = getMonthWorkDays(workDays) + " дн";
+    answerWeekWorkDays.textContent = workDays;
+    answerMonthkWorkDays.textContent = getMonthWorkDays(workDays);
 
-    answerWeekFreeDays.textContent = getWeekFreeDays(workDays) + " дн.";
-    answerMonthFreeDays.textContent = getMonthFreeDays(workDays) + " дн.";
+    answerWeekFreeDays.textContent = getWeekFreeDays(workDays);
+    answerMonthFreeDays.textContent = getMonthFreeDays(workDays);
 
-    answerDayNonPaidHours.textContent = nonPaidHours + " ч.";
-    answerWeekNonPaidHours.textContent = getWeekNonPaidHours(nonPaidHours, workDays) + " ч."
-    answerMonthNonPaidHours.textContent = getMonthNonPaidHours(nonPaidHours, workDays) + " ч."
+    answerDayNonPaidHours.textContent = nonPaidHours;
+    answerWeekNonPaidHours.textContent = getWeekNonPaidHours(nonPaidHours, workDays);
+    answerMonthNonPaidHours.textContent = getMonthNonPaidHours(nonPaidHours, workDays);
 
-    answerWorkDayFreeHours.textContent = getWorkdayFreeHours(activeHours, workHours, nonPaidHours) + " ч.";
-    answerWeekFreeHours.textContent = getWeekFreeHours(activeHours, workHours, nonPaidHours, workDays) + " ч.";
-    answerMonthFreeHours.textContent = getMonthFreeHours(activeHours, workHours, nonPaidHours, workDays) + " ч.";
+    answerWorkDayFreeHours.textContent = getWorkdayFreeHours(activeHours, workHours, nonPaidHours);
+    answerWeekFreeHours.textContent = getWeekFreeHours(activeHours, workHours, nonPaidHours, workDays);
+    answerMonthFreeHours.textContent = getMonthFreeHours(activeHours, workHours, nonPaidHours, workDays);
 
-    answerHoursActive.textContent = activeHours + " ч.";
-    answerHoursSleep.textContent = sleepHours + " ч."
+    answerHoursActive.textContent = activeHours;
+    answerHoursSleep.textContent = sleepHours;
 });
 
 

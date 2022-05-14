@@ -59,6 +59,10 @@ main .container {
     min-width: 120px;
 }
 
+.units {
+    font-size: 0.9em;
+}
+
 .answers .extended-description {
     font-size: 0.7em;
     color: grey;
