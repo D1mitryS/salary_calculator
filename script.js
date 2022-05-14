@@ -12,50 +12,45 @@ const sleepHoursInput = document.querySelector("#sleep-hours");
 const submitButton = document.querySelector("#submit");
 
 
-const month = 31;
-const day = 24;
-const week = 7;
-const weeksAtMont = month / week;
-const nolog = 13;
+const answerHourSalaryTaxed = document.querySelector("#answer-hour-salary-taxed");
+const answerHourSalaryUntaxed = document.querySelector("#answer-hour-salary-untaxed");
 
+const answerDaySalary = document.querySelector("#answer-day-salary");
+const answerWeekSalary = document.querySelector("#answer-week-salary");
+const answerMonthSalary = document.querySelector("#answer-month-salary");
 
-const answerSalaryTaxed = document.querySelector("#answer-salary-taxed");
-const answerSalaryUntaxed = document.querySelector("#answer-salary-untaxed");
+const answerDayFullSalary = document.querySelector("#answer-day-full-salary");
+const answerWeekFullSalary = document.querySelector("#answer-week-full-salary");
+const answerMonthFullSalary = document.querySelector("#answer-month-full-salary");
 
-const answerSalaryInDay = document.querySelector("#answer-salary-at-day");
-const answerSalaryInWeek = document.querySelector("#answer-salary-at-week");
-const answerSalaryInMonth = document.querySelector("#answer-salary-at-month");
+const answerDaySalaryUntaxed = document.querySelector("#answer-day-salary-untaxed");
+const answerWeekSalaryUntaxed = document.querySelector("#answer-week-salary-untaxed");
+const answerMonthSalaryUntaxed = document.querySelector("#answer-month-salary-untaxed");
 
-const answerFullSalaryInDay = document.querySelector("#answer-full-salary-at-day");
-const answerFullSalaryInWeek = document.querySelector("#answer-full-salary-at-week");
-const answerFullSalaryInMonth = document.querySelector("#answer-full-salary-at-month");
+const answerDayFullSalaryUntaxed = document.querySelector("#answer-day-full-salary-untaxed");
+const answerWeekFullSalaryUntaxed = document.querySelector("#answer-week-full-salary-untaxed");
+const answerMonthFullSalaryUntaxed = document.querySelector("#answer-month-full-salary-untaxed");
 
-const answerSalaryInDayUntaxed = document.querySelector("#answer-untaxed-salary-at-day");
-const answerSalaryInWeekUntaxed = document.querySelector("#answer-untaxed-salary-at-week");
-const answerSalaryInMonthUntaxed = document.querySelector("#answer-untaxed-salary-at-month");
+const answerDayWorkHours = document.querySelector("#answer-day-work-hours");
+const answerWeekWorkHours = document.querySelector("#answer-week-work-hours");
+const answerMonthWorkHours = document.querySelector("#answer-month-work-hours");
 
-const answerFullSalaryInDayUntaxed = document.querySelector("#answer-untaxed-full-salary-at-day");
-const answerFullSalaryInWeekUntaxed = document.querySelector("#answer-untaxed-full-salary-at-week");
-const answerFullSalaryInMonthUntaxed = document.querySelector("#answer-untaxed-full-salary-at-month");
+const answerWeekWorkDays = document.querySelector("#answer-week-work-days");
+const answerMonthkWorkDays = document.querySelector("#answer-month-work-days");
 
-const answerWorkHoursInDay = document.querySelector("#answer-work-hours-at-day");
-const answerWorkHoursInWeek = document.querySelector("#answer-work-hours-at-week");
-const answerWorkHoursInMonth = document.querySelector("#answer-work-hours-at-month");
+const answerWeekFreeDays = document.querySelector("#answer-week-free-days");
+const answerMonthFreeDays = document.querySelector("#answer-month-free-days");
 
-const answerWorkDaysOnWeek = document.querySelector("#answer-work-days-at-week");
-const answerWorkDaysOnMonth = document.querySelector("#answer-work-days-at-month");
+const answerDayNonPaidHours = document.querySelector("#answer-day-non-paid-hours");
+const answerWeekNonPaidHours = document.querySelector("#answer-week-non-paid-hours");
+const answerMonthNonPaidHours = document.querySelector("#answer-month-non-paid-hours");
 
-const answerFreeDaysInWeek = document.querySelector("#answer-freedays-in-week");
-const answerFreeDaysInMonth = document.querySelector("#answer-freedays-in-month");
+const answerWorkDayFreeHours = document.querySelector("#answer-workday-free-hours");
+const answerWeekFreeHours = document.querySelector("#answer-week-free-hours");
+const answerMonthFreeHours = document.querySelector("#answer-month-free-hours");
 
-const answerNonPaidHours = document.querySelector("#answer-non-paid-hours");
-
-const answerFreeHoursOnWorkDay = document.querySelector("#answer-freehours-on-workday");
-const answerFreeHoursOnWeek = document.querySelector("#answer-freehours-on-week");
-const answerFreeHoursOnMonth = document.querySelector("#answer-freehours-on-month");
-
-const answerActiveHours = document.querySelector("#answer-active-hours");
-const answerSleepHours = document.querySelector("#answer-sleep-time");
+const answerHoursActive = document.querySelector("#answer-hours-active");
+const answerHoursSleep = document.querySelector("#answer-hours-sleep");
 
 
 const presets = [{
@@ -110,20 +105,26 @@ const presets = [{
     }
 ]
 
+const month = 31;
+const day = 24;
+const week = 7;
+const weeksAtMont = month / week;
+const nolog = 13;
+
 
 presetSelect.addEventListener("change", () => {
-    const presetValue = presetSelect.value;
+    const selectVal = presetSelect.value;
 
-    if (presetValue !== 'standard') {
-        salaryInput.value = presets[presetValue].salary;
-        salaryOutput.value = presets[presetValue].salary;
+    if (selectVal !== 'standard') {
+        salaryInput.value = presets[selectVal].salary;
+        salaryOutput.value = presets[selectVal].salary;
 
-        hoursInput.value = presets[presetValue].workHours;
-        daysInput.value = presets[presetValue].workDays;
-        nonPaidHoursInput.value = presets[presetValue].nonPaid;
-        bonusInput.value = presets[presetValue].bonus;
-        fineInput.value = presets[presetValue].fine;
-        sleepHoursInput.value = presets[presetValue].sleepHours;
+        hoursInput.value = presets[selectVal].workHours;
+        daysInput.value = presets[selectVal].workDays;
+        nonPaidHoursInput.value = presets[selectVal].nonPaid;
+        bonusInput.value = presets[selectVal].bonus;
+        fineInput.value = presets[selectVal].fine;
+        sleepHoursInput.value = presets[selectVal].sleepHours;
     }
 })
 
@@ -138,76 +139,8 @@ const valToNum = val => {
 }
 
 
-calculatorForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-
-    const workHours = valToNum(hoursInput.value);
-    const workDays = valToNum(daysInput.value);
-    const nonPaidHours = valToNum(nonPaidHoursInput.value);
-    const sleepHours = valToNum(sleepHoursInput.value);
-    const activeHours = day - sleepHours;
-    
-
-    const bonus = valToNum(bonusInput.value);
-    const fine = valToNum(fineInput.value);
-    const totalBonus = bonus - fine;
-
-
-    let salaryInHour = 0;
-
-    if (taxCheckbox.checked) {
-        salaryInHour = valToNum(salaryInput.value);
-        
-        answerSalaryTaxed.textContent = salaryInHour;
-        answerSalaryUntaxed.textContent = getUntaxed(salaryInHour);
-    }
-    else {
-        salaryInHour = getTaxed(valToNum(salaryInput.value));
-        
-        answerSalaryTaxed.textContent = salaryInHour;
-        answerSalaryUntaxed.textContent = valToNum(salaryInput.value);
-    }
-
-
-    answerSalaryInDay.textContent = getSalaryInDay(salaryInHour, workHours) + " руб.";
-    answerSalaryInWeek.textContent = getSalaryInWeek(salaryInHour, workHours, workDays) + " руб.";
-    answerSalaryInMonth.textContent = getSalaryInMount(salaryInHour, workHours, workDays) + " руб.";
-
-    answerFullSalaryInDay.textContent = getFullSalary(getSalaryInDay(salaryInHour, workHours), getBonusInDay(totalBonus, workDays)) + " руб.";
-    answerFullSalaryInWeek.textContent = getFullSalary(getSalaryInWeek(salaryInHour, workHours, workDays), getBonusInWeek(totalBonus, workDays)) + " руб.";
-    answerFullSalaryInMonth.textContent = getFullSalary(getSalaryInMount(salaryInHour, workHours, workDays), totalBonus) + " руб.";
-
-    answerSalaryInDayUntaxed.textContent = getSalaryWoTax(getSalaryInDay(salaryInHour, workHours)) + " руб.";
-    answerSalaryInWeekUntaxed.textContent = getSalaryWoTax(getSalaryInWeek(salaryInHour, workHours, workDays)) + " руб.";
-    answerSalaryInMonthUntaxed.textContent = getSalaryWoTax(getSalaryInMount(salaryInHour, workHours, workDays)) + " руб.";
-
-    answerFullSalaryInDayUntaxed.textContent = getFullSalaryWoTax(getSalaryInDay(salaryInHour, workHours), getBonusInDay(totalBonus, workDays)) + " руб.";
-    answerFullSalaryInWeekUntaxed.textContent = getFullSalaryWoTax(getSalaryInWeek(salaryInHour, workHours, workDays), getBonusInWeek(totalBonus, workDays)) + " руб.";
-    answerFullSalaryInMonthUntaxed.textContent = getFullSalaryWoTax(getSalaryInMount(salaryInHour, workHours, workDays), totalBonus) + " руб.";
-
-    answerWorkHoursInDay.textContent = workHours + " ч.";
-    answerWorkHoursInWeek.textContent = getWorkHoursInWeek(workHours, workDays) + " ч.";
-    answerWorkHoursInMonth.textContent = getWorkHoursInMonth(workHours, workDays) + " ч.";
-
-    answerWorkDaysOnWeek.textContent = workDays + " дн.";
-    answerWorkDaysOnMonth.textContent = getWorkDaysInMonth(workDays) + " дн";
-
-    answerFreeDaysInWeek.textContent = getFreeDaysInWeek(workDays) + " дн.";
-    answerFreeDaysInMonth.textContent = getFreeDaysInMount(workDays) + " дн.";
-
-    answerNonPaidHours.textContent = nonPaidHours + " ч.";
-
-    answerFreeHoursOnWorkDay.textContent = getFreeHoursOnWorkDay(activeHours, workHours, nonPaidHours) + " ч.";
-    answerFreeHoursOnWeek.textContent = getFreeHoursOnWeek(activeHours, workHours, nonPaidHours, workDays) + " ч.";
-    answerFreeHoursOnMonth.textContent = getFreeHoursOnMount(activeHours, workHours, nonPaidHours, workDays) + " ч.";
-
-    answerActiveHours.textContent = activeHours + " ч.";
-    answerSleepHours.textContent = sleepHours + " ч."
-})
-
-
 const getUntaxed = num => {
-    return num + (num / 100) * nolog ;
+    return num + (num / 100) * nolog;
 }
 
 const getTaxed = num => {
@@ -215,77 +148,164 @@ const getTaxed = num => {
 }
 
 
-const getSalaryInDay = (salaryInHour, workHours) => {
+const getActiveHours = (day, sleepHours) => {
+    return day - sleepHours;
+}
+
+const getTotalBonus = (bonus, fine) => {
+    return bonus - fine;
+}
+
+
+calculatorForm.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+
+    const salary = valToNum(salaryInput.value)
+    const workHours = valToNum(hoursInput.value);
+    const workDays = valToNum(daysInput.value);
+    const nonPaidHours = valToNum(nonPaidHoursInput.value);
+    const bonus = valToNum(bonusInput.value);
+    const fine = valToNum(fineInput.value);
+    const sleepHours = valToNum(sleepHoursInput.value);
+
+    const activeHours = getActiveHours(day, sleepHours);
+    const totalBonus = getTotalBonus(bonus, fine);
+
+
+    let salaryTransformed = 0;
+
+    if (taxCheckbox.checked) {
+        answerHourSalaryTaxed.textContent = salary
+        answerHourSalaryUntaxed.textContent = getUntaxed(salary)
+        
+        salaryTransformed = salary;
+    } else {
+        answerHourSalaryTaxed.textContent = getTaxed(salary);
+        answerHourSalaryUntaxed.textContent = salary;
+        
+        salaryTransformed = getTaxed(salary);
+    };
+
+
+    answerDaySalary.textContent = getDaySalary(salaryTransformed, workHours) + " руб.";
+    answerWeekSalary.textContent = getWeekSalary(salaryTransformed, workHours, workDays) + " руб.";
+    answerMonthSalary.textContent = getMonthSalary(salaryTransformed, workHours, workDays) + " руб.";
+
+    answerDayFullSalary.textContent = getFullSalary(getDaySalary(salaryTransformed, workHours), getDayBonus(totalBonus, workDays)) + " руб.";
+    answerWeekFullSalary.textContent = getFullSalary(getWeekSalary(salaryTransformed, workHours, workDays), getWeekBonus(totalBonus, workDays)) + " руб.";
+    answerMonthFullSalary.textContent = getFullSalary(getMonthSalary(salaryTransformed, workHours, workDays), totalBonus) + " руб.";
+
+    answerDaySalaryUntaxed.textContent = getSalaryUntaxed(getDaySalary(salaryTransformed, workHours)) + " руб.";
+    answerWeekSalaryUntaxed.textContent = getSalaryUntaxed(getWeekSalary(salaryTransformed, workHours, workDays)) + " руб.";
+    answerMonthSalaryUntaxed.textContent = getSalaryUntaxed(getMonthSalary(salaryTransformed, workHours, workDays)) + " руб.";
+
+    answerDayFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getDaySalary(salaryTransformed, workHours), getDayBonus(totalBonus, workDays)) + " руб.";
+    answerWeekFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getWeekSalary(salaryTransformed, workHours, workDays), getWeekBonus(totalBonus, workDays)) + " руб.";
+    answerMonthFullSalaryUntaxed.textContent = getFullSalaryUntaxed(getMonthSalary(salaryTransformed, workHours, workDays), totalBonus) + " руб.";
+
+    answerDayWorkHours.textContent = workHours + " ч.";
+    answerWeekWorkHours.textContent = getWeekWorkHours(workHours, workDays) + " ч.";
+    answerMonthWorkHours.textContent = getMonthWorkHours(workHours, workDays) + " ч.";
+
+    answerWeekWorkDays.textContent = workDays + " дн.";
+    answerMonthkWorkDays.textContent = getMonthWorkDays(workDays) + " дн";
+
+    answerWeekFreeDays.textContent = getWeekFreeDays(workDays) + " дн.";
+    answerMonthFreeDays.textContent = getMonthFreeDays(workDays) + " дн.";
+
+    answerDayNonPaidHours.textContent = nonPaidHours + " ч.";
+    answerWeekNonPaidHours.textContent = getWeekNonPaidHours(nonPaidHours, workDays) + " ч."
+    answerMonthNonPaidHours.textContent = getMonthNonPaidHours(nonPaidHours, workDays) + " ч."
+
+    answerWorkDayFreeHours.textContent = getWorkdayFreeHours(activeHours, workHours, nonPaidHours) + " ч.";
+    answerWeekFreeHours.textContent = getWeekFreeHours(activeHours, workHours, nonPaidHours, workDays) + " ч.";
+    answerMonthFreeHours.textContent = getMonthFreeHours(activeHours, workHours, nonPaidHours, workDays) + " ч.";
+
+    answerHoursActive.textContent = activeHours + " ч.";
+    answerHoursSleep.textContent = sleepHours + " ч."
+});
+
+
+const getDaySalary = (salaryInHour, workHours) => {
     return salaryInHour * workHours;
-}
+};
 
-const getSalaryInWeek = (salaryInHour, workHours, workDays) => {
-    return getSalaryInDay(salaryInHour, workHours) * workDays;
-}
+const getWeekSalary = (salaryInHour, workHours, workDays) => {
+    return getDaySalary(salaryInHour, workHours) * workDays;
+};
 
-const getSalaryInMount = (salaryInHour, workHours, workDays) => {
-    return Math.round(getSalaryInWeek(salaryInHour, workHours, workDays) * weeksAtMont);
-}
+const getMonthSalary = (salaryInHour, workHours, workDays) => {
+    return Math.round(getWeekSalary(salaryInHour, workHours, workDays) * weeksAtMont);
+};
 
 
-const getBonusInDay = (totalBonus, workDays) => {
-    return (totalBonus > 0) ? totalBonus / getWorkDaysInMonth(workDays) : 0;
-}
+const getDayBonus = (totalBonus, workDays) => {
+    return (totalBonus > 0) ? totalBonus / getMonthWorkDays(workDays) : 0;
+};
 
-const getBonusInWeek = (totalBonus, workDays) => {
-    return getBonusInDay(totalBonus, workDays) * workDays;
-}
+const getWeekBonus = (totalBonus, workDays) => {
+    return getDayBonus(totalBonus, workDays) * workDays;
+};
 
 
 const getFullSalary = (salaryInPeriod, bonusInPeriod) => {
     return Math.round(salaryInPeriod + bonusInPeriod);
-}
+};
 
 
-const getSalaryWoTax = salaryInPeriod => {
+const getSalaryUntaxed = salaryInPeriod => {
     return Math.round(getUntaxed(salaryInPeriod))
-}
+};
 
 
-const getFullSalaryWoTax = (salaryInPeriod, bonusInPerion) => {
-    return Math.round(getSalaryWoTax(salaryInPeriod) + bonusInPerion);
-}
+const getFullSalaryUntaxed = (salaryInPeriod, bonusInPerion) => {
+    return Math.round(getSalaryUntaxed(salaryInPeriod) + bonusInPerion);
+};
 
 
-const getWorkHoursInWeek = (workHours, workDays) => {
+const getWeekWorkHours = (workHours, workDays) => {
     return workHours * workDays;
-}
+};
 
-const getWorkHoursInMonth = (workHours, workDays) => {
-    return Math.round(getWorkHoursInWeek(workHours, workDays) * weeksAtMont);
-}
+const getMonthWorkHours = (workHours, workDays) => {
+    return Math.round(getWeekWorkHours(workHours, workDays) * weeksAtMont);
+};
 
 
-const getWorkDaysInMonth = workDays => {
+const getMonthWorkDays = workDays => {
     return Math.round(workDays * weeksAtMont);
-}
+};
 
 
-const getFreeDaysInWeek = workDays => {
+const getWeekFreeDays = workDays => {
     return week - workDays;
-}
+};
 
-const getFreeDaysInMount = workDays => {
-    return month - getWorkDaysInMonth(workDays);
-}
+const getMonthFreeDays = workDays => {
+    return month - getMonthWorkDays(workDays);
+};
 
 
-const getFreeHoursOnWorkDay = (activeHours, workHours, nonPaidHours) => {
+const getWeekNonPaidHours = (nonPaidHours, workDays) => {
+    return nonPaidHours * workDays;
+};
+
+const getMonthNonPaidHours = (nonPaidHours, workDays) => {
+    return Math.round(getWeekNonPaidHours(nonPaidHours, workDays) * weeksAtMont);
+};
+
+
+const getWorkdayFreeHours = (activeHours, workHours, nonPaidHours) => {
     if (workHours === 0) {
         return activeHours
     }
     return activeHours - workHours - nonPaidHours
-}
+};
 
-const getFreeHoursOnWeek = (activeHours, workHours, nonPaidHours, workDays) => {
-    return getFreeHoursOnWorkDay(activeHours, workHours, nonPaidHours) * workDays + activeHours * (week - workDays);
-}
+const getWeekFreeHours = (activeHours, workHours, nonPaidHours, workDays) => {
+    return getWorkdayFreeHours(activeHours, workHours, nonPaidHours) * workDays + activeHours * (week - workDays);
+};
 
-const getFreeHoursOnMount = (activeHours, workHours, nonPaidHours, workDays) => {
-    return Math.round(getFreeHoursOnWeek(activeHours, workHours, nonPaidHours, workDays) * weeksAtMont);
-}
+const getMonthFreeHours = (activeHours, workHours, nonPaidHours, workDays) => {
+    return Math.round(getWeekFreeHours(activeHours, workHours, nonPaidHours, workDays) * weeksAtMont);
+};

@@ -22,7 +22,7 @@ h3 {
 }
 
 .page-header {
-    box-shadow: 1px 1px 40px;
+    box-shadow: 10px 10px 40px;
 }
 
 .page-header .container {
@@ -40,7 +40,7 @@ main .container {
     gap: 25px;
 }
 
-section.answers table {
+.answers table {
     width: 100%;
 }
 
@@ -64,7 +64,7 @@ section.answers table {
     color: grey;
 }
 
-section.settings {
+.settings {
     align-self: start;
     border: 1px white solid;
 }
@@ -87,10 +87,12 @@ section.settings {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-start;
 }
 
-.settings label:nth-of-type(1) {
+.select-container {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -115,11 +117,10 @@ section.settings {
    height: 26px;
 }
 
-.settings input[type="checkbox"] {
-}
 
 .settings input[type="number"] {
-    width: 50px;
+    width: 60px;
+    font-size: 0.9em;
 }
 
 .settings .extended-description {
@@ -130,8 +131,8 @@ section.settings {
 .settings button {
     align-self: flex-end;
     margin-top: 15px;
-    width: 125px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     font-size: 1em;
 }
 
