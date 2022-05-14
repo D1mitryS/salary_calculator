@@ -196,7 +196,8 @@
                         </tr>
                         <tr>
                             <td>
-                                Неоплачиваемые часы в неделю <span class="extended-description">(без учёта выходных)</span>
+                                Неоплачиваемые часы в неделю <span class="extended-description">(без учёта
+                                    выходных)</span>
                             </td>
                             <td>
                                 <output class="answer" id="answer-week-non-paid-hours">0</output>
@@ -204,7 +205,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Неоплачиваемые часы в месяц <span class="extended-description">(без учёта выходных)</span>
+                            <td>Неоплачиваемые часы в месяц <span class="extended-description">(без учёта
+                                    выходных)</span>
                             </td>
                             <td>
                                 <output class="answer" id="answer-month-non-paid-hours">0</output>
@@ -230,7 +232,7 @@
                         </tr>
                         <tr>
                             <td>
-                                Свободные часы в месяц 
+                                Свободные часы в месяц
                                 <span class="extended-description">(с учётом сна, рабочих и
                                     выходных дней)</span>
                             </td>
@@ -260,8 +262,8 @@
                 <h2>Исходные данные</h2>
                 <form name="calculator" action="index.html" method="post" id="calculator-form">
                     <div class="form-container">
-                        <div class="select-container">
-                            <p>Пресет</p>
+                        <div class="form-inner-container">
+                            <span class=description>Пресет</span>
                             <select id="preset-select">
                                 <option selected value="standard">Выбрать пресет</option>
                                 <option value="0">Офисный планктон</option>
@@ -271,48 +273,48 @@
                                 <option value="4">Тунеядец</option>
                             </select>
                         </div>
-                        <label>
-                            <p>Ставка - </p>
+                        <div class="form-inner-container">
+                            <span class=description>Ставка - </span>
                             <div class="range-container">
                                 <output id="salary-output">0</output>
                                 <input type="range" id="salary" min="0" max="15" step="0.25" value="0"
                                     name="calculator">
                             </div>
-                        </label>
+                        </div>
                         <label>
-                            <p>С учётом НДФЛ -
+                            <span class=description>С учётом НДФЛ -
                                 <span class="extended-description">13%</span>
-                            </p>
+                            </span>
                             <input type="checkbox" checked id="tax" name="calculator">
                         </label>
                         <label>
-                            <p>Рабочие часы -</p>
+                            <span class=description>Рабочие часы -</span>
                             <input type="number" min="0" max="12" value="0" id="hours" name="calculator">
                         </label>
                         <label>
-                            <p>Рабочие дни -</p>
-                            <input type="number" min="0" max="7" value="0" id="days"  name="calculator">
+                            <span class=description>Рабочие дни -</span>
+                            <input type="number" min="0" max="7" value="0" id="days" name="calculator">
                         </label>
                         <label>
-                            <p>Неоплачиваемые часы -
+                            <span class=description>Неоплачиваемые часы -
                                 <span class="extended-description">(обед, дорога, пр.)</span>
-                            </p>
+                            </span>
                             <input type="number" id="non-paid-hours" min="0" max="24" value="0" name="calculator">
                         </label>
                         <label>
-                            <p>Премия -
+                            <span class=description>Премия -
                                 <span class="extended-description">(процент от продаж, чаевые, пр.)</span>
-                            </p>
+                            </span>
                             <input type="number" id="bonus" min="0" max="2000" value="0" name="calculator">
                         </label>
                         <label>
-                            <p>Штрафы -
+                            <span class=description>Штрафы -
                                 <span class="extended-description">(вычеты, просрочка, пр.)</span>
-                            </p>
+                            </span>
                             <input type="number" id="fine" min="0" max="2000" value="0" name="calculator">
                         </label>
                         <label>
-                            <p>Часы сна - </p>
+                            <span class=description>Часы сна - </span>
                             <input type="number" id="sleep-hours" min="0" max="14" value="0" name="calculator">
                         </label>
                         <button type="submit" id="submit" name="calculator">Рассчитать</button>
