@@ -1,6 +1,6 @@
 body {
     font-size: larger;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 * {
@@ -30,17 +30,19 @@ h3 {
 }
 
 main {
+    display: flex;
     background-color: #f0e9ed;
 }
 
 main .container {
+    margin: auto;
     padding: 25px;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 25px;
 }
 
-.answers table {
+section.answers table {
     width: 100%;
 }
 
@@ -59,88 +61,93 @@ main .container {
     min-width: 120px;
 }
 
-.units {
-    font-size: 0.9em;
-}
-
 .answers .extended-description {
     font-size: 0.7em;
     color: grey;
 }
 
-.settings {
+.units {
+    font-size: 0.9em;
+}
+
+section.settings {
     align-self: start;
     border: 1px white solid;
 }
 
 .settings h2 {
+    padding: 10px;
     background-color: #25786e;
     color: white;
     font-size: 100%;
-    padding: 10px;
 }
 
 .form-container {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #f0e9ed;
+    background-color: #fff;
 }
 
-.settings label {
+.form-inner-container {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-inner-container:nth-of-type(1) {
+    align-items: baseline;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.form-inner-container:nth-of-type(1) select {
+    font-size: .6em;
+    padding: .5%;
+}
+
+.form-container label {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.select-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.settings output {
-    font-size: 1em;
-}
-
-.settings input:focus {
-    background-color: #25786e;
-    color: white;
-}
-
-.settings input[type="range"] {
-    background-color: #fff;
+.form-container input[type="range"] {
+    background-color: #f0e9ed;
     -webkit-appearance: none;
     width: 150px;
-    height:15px;
+    height: 15px;
 }
 
-.settings input[type="range"]::-webkit-slider-thumb {
+.form-container input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-   background-color: #25786e;
-   opacity: 0.9;
-   width: 10px;
-   height: 26px;
+    background-color: #25786e;
+    opacity: 0.9;
+    width: 10px;
+    height: 26px;
 }
 
-
-.settings input[type="number"] {
-    width: 70px;
-    font-size: 1em;
-}
-
-.settings .extended-description {
+.form-container .extended-description {
     font-size: 0.7em;
     color: grey;
 }
 
-.settings button {
-    align-self: flex-end;
-    margin-top: 15px;
-    width: 150px;
-    height: 40px;
-    font-size: 1em;
+.form-container input[type="number"] {
+    width: 70px;
+    font-size: 0.9em;
 }
 
+.form-container input[type="number"]:focus {
+    background-color: #25786e;
+    color: white;
+}
+
+.form-container button {
+    align-self: flex-end;
+    padding: 1.5%;
+    margin-top: 25px;
+    min-width: 30%;
+    font-size: 1em;
+}

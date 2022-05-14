@@ -177,12 +177,12 @@ calculatorForm.addEventListener("submit", (evt) => {
     if (taxCheckbox.checked) {
         answerHourSalaryTaxed.textContent = salary
         answerHourSalaryUntaxed.textContent = getUntaxed(salary)
-        
+
         salaryTransformed = salary;
     } else {
         answerHourSalaryTaxed.textContent = getTaxed(salary);
         answerHourSalaryUntaxed.textContent = salary;
-        
+
         salaryTransformed = getTaxed(salary);
     };
 
