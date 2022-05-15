@@ -53,6 +53,10 @@ const answerHoursActive = document.querySelector("#answer-hours-active");
 const answerHoursSleep = document.querySelector("#answer-hours-sleep");
 
 
+const units = document.querySelectorAll(".units");
+let unitsSwitcher = true;
+
+
 const presets = [{
         name: 'планктон',
         salary: 5,
@@ -134,29 +138,6 @@ salaryInput.addEventListener("input", () => {
 })
 
 
-const valToNum = val => {
-    return (val) ? Number.parseInt(val, 10) : 0;
-}
-
-
-const getUntaxed = num => {
-    return num + (num / 100) * nolog;
-}
-
-const getTaxed = num => {
-    return num - (num / 100) * nolog;
-}
-
-
-const getActiveHours = (day, sleepHours) => {
-    return day - sleepHours;
-}
-
-const getTotalBonus = (bonus, fine) => {
-    return bonus - fine;
-}
-
-
 calculatorForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
@@ -223,7 +204,40 @@ calculatorForm.addEventListener("submit", (evt) => {
 
     answerHoursActive.textContent = activeHours;
     answerHoursSleep.textContent = sleepHours;
+
+
+    while (unitsSwitcher) {
+        units.forEach(unit => {
+            unit.hidden = false;
+        })
+        
+        unitsSwitcher = false;
+    }
 });
+
+
+const valToNum = val => {
+    return (val) ? Number.parseInt(val, 10) : 0;
+}
+
+
+const getUntaxed = num => {
+    return num + (num / 100) * nolog;
+}
+
+const getTaxed = num => {
+    return num - (num / 100) * nolog;
+}
+
+
+const getActiveHours = (day, sleepHours) => {
+    return day - sleepHours;
+}
+
+
+const getTotalBonus = (bonus, fine) => {
+    return bonus - fine;
+}
 
 
 const getDaySalary = (salaryInHour, workHours) => {

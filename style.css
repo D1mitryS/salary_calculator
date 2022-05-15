@@ -72,12 +72,12 @@ section.settings {
     align-self: start;
 }
 
-.settings h2 {
+.input-panel h2 {
     padding: 10px;
     background-color: #25786e;
     color: white;
     font-size: 1em;
-    border: 1px solid gray;
+    height: 40.2px;
     border-bottom: 0;
 }
 
@@ -86,8 +86,8 @@ section.settings {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    border: 1px solid gray;
     margin-bottom: 10px;
+    border-top: 0;
 }
 
 .form-container label, 
@@ -105,7 +105,7 @@ section.settings {
     margin-bottom: 10px;
 }
 
-.form-container label:nth-of-type(1) select {
+.form-container select {
     font-size: .6em;
     padding: .5%;
 }
@@ -139,7 +139,7 @@ section.settings {
 
 .annotation {
     padding: 5px;
-    font-size: .8em;
+    font-size: .7em;
     border: 1px solid grey;
 }
 
