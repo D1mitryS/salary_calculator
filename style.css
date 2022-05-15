@@ -62,7 +62,7 @@ section.answers table {
 }
 
 .answers .extended-description {
-    font-size: 0.7em;
+    font-size: 0.6em;
     color: grey;
 }
 
@@ -72,14 +72,14 @@ section.answers table {
 
 section.settings {
     align-self: start;
-    border: 1px white solid;
+    border: 1px solid gray;
 }
 
 .settings h2 {
     padding: 10px;
     background-color: #25786e;
     color: white;
-    font-size: 100%;
+    font-size: 1em;
 }
 
 .form-container {
@@ -89,44 +89,24 @@ section.settings {
     background-color: #fff;
 }
 
-.form-inner-container {
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-inner-container:nth-of-type(1) {
-    align-items: baseline;
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.form-inner-container:nth-of-type(1) select {
-    font-size: .6em;
-    padding: .5%;
-}
-
-.form-container label {
+.form-container label, 
+.labeled {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.form-container input[type="range"] {
-    background-color: #f0e9ed;
-    -webkit-appearance: none;
-    width: 150px;
-    height: 15px;
+.form-container label:nth-of-type(1) {
+    align-items: baseline;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
 }
 
-.form-container input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: #25786e;
-    opacity: 0.9;
-    width: 10px;
-    height: 26px;
+.form-container label:nth-of-type(1) select {
+    font-size: .6em;
+    padding: .5%;
 }
 
 .form-container .extended-description {
@@ -136,18 +116,13 @@ section.settings {
 
 .form-container input[type="number"] {
     width: 70px;
-    font-size: 0.9em;
-}
-
-.form-container input[type="number"]:focus {
-    background-color: #25786e;
-    color: white;
+    font-size: .9em;
 }
 
 .form-container button {
     align-self: flex-end;
-    padding: 1.5%;
-    margin-top: 25px;
+    padding: 1%;
+    margin-top: 20px;
     min-width: 30%;
-    font-size: 1em;
+    font-size: .9em;
 }
