@@ -30,12 +30,10 @@ h3 {
 }
 
 main {
-    display: flex;
     background-color: #f0e9ed;
 }
 
 main .container {
-    margin: auto;
     padding: 25px;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -115,7 +113,8 @@ section.settings {
 }
 
 .form-container input[type="number"] {
-    width: 70px;
+    max-width: 70px;
+    min-width: 70px;
     font-size: .9em;
 }
 
