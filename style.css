@@ -21,42 +21,38 @@ h3 {
     margin: -1px;
 }
 
-.page-header {
-    box-shadow: 10px 10px 40px;
-}
-
 .page-header .container {
     padding: 20px;
 }
 
-main {
-    background-color: #f0e9ed;
-}
-
 main .container {
-    padding: 25px;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 25px;
+    padding: 25px;
+    background-color: #f0e9ed;
 }
 
 section.answers table {
     width: 100%;
 }
 
-.answers thead {
-    background-color: #25786e;
+.answers th {
+    padding: 10px;
+    font-weight: normal;
+    border: 1px solid white;
     color: white;
+    background-color: #25786e;
 }
 
-.answers tbody tr:nth-of-type(2n) {
+.answers tr:nth-of-type(2n) {
     background-color: white;
 }
 
 .answers td {
+    min-width: 120px;
     padding: 10px;
     border: 1px solid white;
-    min-width: 120px;
 }
 
 .answers .extended-description {
@@ -72,26 +68,25 @@ section.settings {
     align-self: start;
 }
 
-.input-panel h2 {
-    padding: 10px;
-    background-color: #25786e;
-    color: white;
-    font-size: 1em;
+.settings h2 {
     height: 40.2px;
+    padding: 10px;
+    font-size: 1em;
+    color: white;
     border-bottom: 0;
+    background-color: #25786e;
 }
 
 .form-container {
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    padding: 20px;
     margin-bottom: 10px;
-    border-top: 0;
+    background-color: #fff;
 }
 
 .form-container label, 
-.labeled {
+.form-container .labeled {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
@@ -110,16 +105,14 @@ section.settings {
     padding: .5%;
 }
 
-
 .slider {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-
 .form-container .extended-description {
-    font-size: 0.7em;
+    font-size: 0.6em;
     color: grey;
 }
 
