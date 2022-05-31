@@ -56,13 +56,15 @@ salaryInput.addEventListener("input", () => {
 
 
 const calculatorForm = document.querySelector('#calculator-form');
-const taxCheckbox = document.querySelector("#tax");
 const hoursInput = document.querySelector("#hours");
 const daysInput = document.querySelector("#days");
 const nonPaidHoursInput = document.querySelector("#non-paid-hours");
 const bonusInput = document.querySelector("#bonus");
 const fineInput = document.querySelector("#fine");
 const sleepHoursInput = document.querySelector("#sleep-hours");
+
+/* Controls if salary value has to be passed to getUntaxed function */
+const taxCheckbox = document.querySelector("#tax");
 
 /* Transform values from input field to number and perform calculations  */
 calculatorForm.addEventListener("submit", (evt) => {
@@ -82,7 +84,7 @@ calculatorForm.addEventListener("submit", (evt) => {
     /* All calculations are based on this const which depends on taxCheckbox value  */
     const salaryComputed = (taxCheckbox.checked) ? salary : getTaxed(salary);
 
-    /* First two cells gets it's text content directly from salary input field */
+    /* First two cells gets it's text content directly from salary input field based on taxCheckbox value */
     if (taxCheckbox.checked) {
         answerSaslaryPerHourTaxed.textContent = salary;
         answerSalaryPerHourUntaxed.textContent = getUntaxed(salary)
