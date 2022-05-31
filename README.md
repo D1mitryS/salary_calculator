@@ -1,1 +1,2 @@
-# "Salary calculator" helps discover additional info about your worktime, freetime, salary and taxes
+# Salary calculator 
+Helps discover additional info about your worktime, freetime, salary and taxes
