@@ -1,3 +1,4 @@
+/* Table cells */
 const answerSaslaryPerHourTaxed = document.querySelector("#answer-hour-salary-taxed");
 const answerSalaryPerHourUntaxed = document.querySelector("#answer-hour-salary-untaxed");
 
@@ -35,17 +36,17 @@ const answerFreeHoursOnWorkDay = document.querySelector("#answer-workday-free-ho
 const answerFreeHoursPerWeek = document.querySelector("#answer-week-free-hours");
 const answerFreeHoursPerMonth = document.querySelector("#answer-month-free-hours");
 
-const answerActiveHoursPerDay = document.querySelector("#answer-hours-active");
+const answerWakeHoursPerDay = document.querySelector("#answer-hours-active");
 const answerSleepHoursPerDay = document.querySelector("#answer-hours-sleep");
 
-
+/* Base parameters */
 const daysInMonth = 31;
 const hoursInDay = 24;
 const daysInWeek = 7;
 const weeksAtMont = daysInMonth / daysInWeek;
 const nolog = 13;
 
-
+/* Slider input with visible output */
 const salaryInput = document.querySelector("#salary");
 const salaryOutput = document.querySelector("#salary-output");
 
@@ -63,6 +64,7 @@ const bonusInput = document.querySelector("#bonus");
 const fineInput = document.querySelector("#fine");
 const sleepHoursInput = document.querySelector("#sleep-hours");
 
+/* Transform values from input field to number and perform calculations  */
 calculatorForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
@@ -74,12 +76,13 @@ calculatorForm.addEventListener("submit", (evt) => {
     const fine = valToNum(fineInput.value);
     const sleepHours = valToNum(sleepHoursInput.value);
 
-    const activeHours = getActiveHours(hoursInDay, sleepHours);
+    const wakeHours = getWakeHours(hoursInDay, sleepHours);
     const totalBonus = getTotalBonus(bonus, fine);
 
-    let salaryTransformed = (taxCheckbox.checked) ? salary : getTaxed(salary);
+    /* All calculations are based on this const which depends on taxCheckbox value  */
+    const salaryComputed = (taxCheckbox.checked) ? salary : getTaxed(salary);
 
-
+    /* First two cells gets it's text content directly from salary input field */
     if (taxCheckbox.checked) {
         answerSaslaryPerHourTaxed.textContent = salary;
         answerSalaryPerHourUntaxed.textContent = getUntaxed(salary)
@@ -88,21 +91,22 @@ calculatorForm.addEventListener("submit", (evt) => {
         answerSalaryPerHourUntaxed.textContent = salary;
     };
 
-    answerSalaryPerDay.textContent = getSalaryPerDay(salaryTransformed, workHours);
-    answerSalaryPerWeek.textContent = getSalaryPerWeek(salaryTransformed, workHours, workDays);
-    answerSalaryPerMonth.textContent = getSalaryPerMonth(salaryTransformed, workHours, workDays);
+    /* Table cell gets text content from calling the functions with arguments stated above */
+    answerSalaryPerDay.textContent = getSalaryPerDay(salaryComputed, workHours);
+    answerSalaryPerWeek.textContent = getSalaryPerWeek(salaryComputed, workHours, workDays);
+    answerSalaryPerMonth.textContent = getSalaryPerMonth(salaryComputed, workHours, workDays);
 
-    answerTotalSalaryPerDay.textContent = getSalaryTotal(getSalaryPerDay(salaryTransformed, workHours), getBonusPerDay(totalBonus, workDays));
-    answerTotalSalaryPerWeek.textContent = getSalaryTotal(getSalaryPerWeek(salaryTransformed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
-    answerTotalSalaryPerMonth.textContent = getSalaryTotal(getSalaryPerMonth(salaryTransformed, workHours, workDays), totalBonus);
+    answerTotalSalaryPerDay.textContent = getSalaryTotal(getSalaryPerDay(salaryComputed, workHours), getBonusPerDay(totalBonus, workDays));
+    answerTotalSalaryPerWeek.textContent = getSalaryTotal(getSalaryPerWeek(salaryComputed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
+    answerTotalSalaryPerMonth.textContent = getSalaryTotal(getSalaryPerMonth(salaryComputed, workHours, workDays), totalBonus);
 
-    answerSalaryPerDayUntaxed.textContent = getSalaryUntaxed(getSalaryPerDay(salaryTransformed, workHours));
-    answerSalaryPerWeekUntaxed.textContent = getSalaryUntaxed(getSalaryPerWeek(salaryTransformed, workHours, workDays));
-    answerSalaryPerMonthUntaxed.textContent = getSalaryUntaxed(getSalaryPerMonth(salaryTransformed, workHours, workDays));
+    answerSalaryPerDayUntaxed.textContent = getSalaryUntaxed(getSalaryPerDay(salaryComputed, workHours));
+    answerSalaryPerWeekUntaxed.textContent = getSalaryUntaxed(getSalaryPerWeek(salaryComputed, workHours, workDays));
+    answerSalaryPerMonthUntaxed.textContent = getSalaryUntaxed(getSalaryPerMonth(salaryComputed, workHours, workDays));
 
-    answerTotalSalaryPerDayUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerDay(salaryTransformed, workHours), getBonusPerDay(totalBonus, workDays));
-    answerTotalSalaryPerWeekUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerWeek(salaryTransformed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
-    answerTotalSalaryPerMonthUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerMonth(salaryTransformed, workHours, workDays), totalBonus);
+    answerTotalSalaryPerDayUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerDay(salaryComputed, workHours), getBonusPerDay(totalBonus, workDays));
+    answerTotalSalaryPerWeekUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerWeek(salaryComputed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
+    answerTotalSalaryPerMonthUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerMonth(salaryComputed, workHours, workDays), totalBonus);
 
     answerWorkHoursPerDay.textContent = workHours;
     answerWorkHoursPerWeek.textContent = getWorkHoursPerWeek(workHours, workDays);
@@ -118,15 +122,15 @@ calculatorForm.addEventListener("submit", (evt) => {
     answerNonPaidHoursPerWeek.textContent = getNonPaidHoursPerWeek(nonPaidHours, workDays);
     answerNonPaidHoursPerMonth.textContent = getNonPaidHoursPerMonth(nonPaidHours, workDays);
 
-    answerFreeHoursOnWorkDay.textContent = getFreeHoursOnWorkDay(activeHours, workHours, nonPaidHours);
-    answerFreeHoursPerWeek.textContent = getFreeHoursPerWeek(activeHours, workHours, nonPaidHours, workDays);
-    answerFreeHoursPerMonth.textContent = getFreeHoursPerMonth(activeHours, workHours, nonPaidHours, workDays);
+    answerFreeHoursOnWorkDay.textContent = getFreeHoursOnWorkDay(wakeHours, workHours, nonPaidHours);
+    answerFreeHoursPerWeek.textContent = getFreeHoursPerWeek(wakeHours, workHours, nonPaidHours, workDays);
+    answerFreeHoursPerMonth.textContent = getFreeHoursPerMonth(wakeHours, workHours, nonPaidHours, workDays);
 
-    answerActiveHoursPerDay.textContent = activeHours;
+    answerWakeHoursPerDay.textContent = wakeHours;
     answerSleepHoursPerDay.textContent = sleepHours;
 });
 
-
+/* Optimizes units display for table cells */
 let unitsHidden = true;
 
 calculatorForm.addEventListener("submit", (evt) => {
@@ -141,7 +145,7 @@ calculatorForm.addEventListener("submit", (evt) => {
     }
 })
 
-
+/* Gives input fields values from presets object array based on select value */
 const presetSelect = document.querySelector("#preset-select");
 const presets = [{
     name: 'планктон',
@@ -212,9 +216,11 @@ presetSelect.addEventListener("change", () => {
 
 
 const valToNum = val => {
-    return Number(val) || 0;
+    return Number.parseInt(val, 10) || 0;
 }
 
+
+/* Adds and removes 13% tax */
 const getUntaxed = num => {
     return num + ((num / 100) * nolog);
 }
@@ -222,9 +228,11 @@ const getTaxed = num => {
     return num - ((num / 100) * nolog);
 }
 
-const getActiveHours = (day, sleepHours) => {
-    return day - sleepHours;
+
+const getWakeHours = (hoursInDay, sleepHours) => {
+    return hoursInDay - sleepHours;
 }
+
 
 const getTotalBonus = (bonus, fine) => {
     return bonus - fine;
@@ -257,11 +265,9 @@ const getSalaryTotal = (salaryInPeriod, bonusInPeriod) => {
     return Math.round(salaryInPeriod + bonusInPeriod);
 };
 
-
 const getSalaryUntaxed = salaryInPeriod => {
     return Math.round(getUntaxed(salaryInPeriod))
 };
-
 
 const getSalaryTotalUntaxed = (salaryInPeriod, bonusInPerion) => {
     return Math.round(getSalaryUntaxed(salaryInPeriod) + bonusInPerion);
@@ -281,7 +287,6 @@ const getWorkDaysPerMonth = workDays => {
     return Math.round(workDays * weeksAtMont);
 };
 
-
 const getFreeDaysPerWeek = workDays => {
     return daysInWeek - workDays;
 };
@@ -300,18 +305,18 @@ const getNonPaidHoursPerMonth = (nonPaidHours, workDays) => {
 };
 
 
-const getFreeHoursOnWorkDay = (activeHours, workHours, nonPaidHours) => {
-    const result = activeHours - workHours - nonPaidHours;
-    return (result >= 0) ? result : activeHours;
+const getFreeHoursOnWorkDay = (wakeHours, workHours, nonPaidHours) => {
+    const result = wakeHours - workHours - nonPaidHours;
+    return (result >= 0) ? result : wakeHours;
 };
 
-const getFreeHoursPerWeek = (activeHours, workHours, nonPaidHours, workDays) => {
-    const freeHoursOnWorkingDays = getFreeHoursOnWorkDay(activeHours, workHours, nonPaidHours) * workDays;
-    const freeHoursOnDayOffs = activeHours * (getFreeDaysPerWeek(workDays));
+const getFreeHoursPerWeek = (wakeHours, workHours, nonPaidHours, workDays) => {
+    const freeHoursOnWorkingDays = getFreeHoursOnWorkDay(wakeHours, workHours, nonPaidHours) * workDays;
+    const freeHoursOnDayOffs = wakeHours * (getFreeDaysPerWeek(workDays));
     return freeHoursOnWorkingDays + freeHoursOnDayOffs;
 };
 
-const getFreeHoursPerMonth = (activeHours, workHours, nonPaidHours, workDays) => {
-    const freeHoursPerWeek = getFreeHoursPerWeek(activeHours, workHours, nonPaidHours, workDays)
+const getFreeHoursPerMonth = (wakeHours, workHours, nonPaidHours, workDays) => {
+    const freeHoursPerWeek = getFreeHoursPerWeek(wakeHours, workHours, nonPaidHours, workDays)
     return Math.round(freeHoursPerWeek * weeksAtMont);
 };
