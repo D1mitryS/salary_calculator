@@ -161,7 +161,7 @@ const presets = [{
 },
 {
     name: 'общепит',
-    salary: 2.5,
+    salary: 2,
     workHours: 12,
     workDays: 4,
     nonPaid: 2,
@@ -171,7 +171,7 @@ const presets = [{
 },
 {
     name: 'студент',
-    salary: 3.5,
+    salary: 3,
     workHours: 6,
     workDays: 4,
     nonPaid: 1,
@@ -181,7 +181,7 @@ const presets = [{
 },
 {
     name: 'живу с мамой',
-    salary: 3.5,
+    salary: 3,
     workHours: 4,
     workDays: 5,
     nonPaid: 1,
