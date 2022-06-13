@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Калькулятор для тунеядцев">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Калькулятор РАБочего времени</title>
+</head>
+
+<body>
+    <header class="page-header">
+        <div class="container">
+            <h1>Калькулятор РАБочего времени</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="answers">
+                <h2 class="visually-hidden">Таблица с данными</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Сценарий</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Оклад в час <span class="extended-description">(с учётом nologa)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-hour-salary-taxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Оклад в час <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-hour-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Оклад в день</td>
+                            <td>
+                                <output class="answer" id="answer-day-salary"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Оклад в неделю</td>
+                            <td>
+                                <output class="answer" id="answer-week-salary"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Оклад в месяц</td>
+                            <td>
+                                <output class="answer" id="answer-month-salary"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в день </td>
+                            <td>
+                                <output class="answer" id="answer-day-full-salary"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в неделю</td>
+                            <td>
+                                <output class="answer" id="answer-week-full-salary"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в месяц</td>
+                            <td>
+                                <output class="answer" id="answer-month-full-salary"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Оклад в день <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-day-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Оклад в неделю <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-week-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Оклад в месяц <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-month-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в день <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-day-full-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в неделю <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-week-full-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Полная з/п в месяц <span class="extended-description">(без учёта налога)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-month-full-salary-untaxed"></output>
+                                <span id="units" hidden class="units">руб.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Время работы в день</td>
+                            <td>
+                                <output class="answer" id="answer-day-work-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Время работы в неделю</td>
+                            <td>
+                                <output class="answer" id="answer-week-work-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Время работы в месяц </td>
+                            <td>
+                                <output class="answer" id="answer-month-work-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Рабочих дней в неделю</td>
+                            <td>
+                                <output class="answer" id="answer-week-work-days"></output>
+                                <span id="units" hidden class="units">дн.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Рабочих дней в месяц</td>
+                            <td>
+                                <output class="answer" id="answer-month-work-days"></output>
+                                <span id="units" hidden class="units">дн.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Выходных дней в неделю</td>
+                            <td>
+                                <output class="answer" id="answer-week-free-days"></output>
+                                <span id="units" hidden class="units">дн.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Выходных дней в месяц</td>
+                            <td>
+                                <output class="answer" id="answer-month-free-days"></output>
+                                <span id="units" hidden class="units">дн.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Неоплачиваемые часы</td>
+                            <td>
+                                <output class="answer" id="answer-day-non-paid-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Неоплачиваемые часы в неделю <span class="extended-description">(без учёта
+                                    выходных)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-week-non-paid-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Неоплачиваемые часы в месяц <span class="extended-description">(без учёта
+                                    выходных)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-month-non-paid-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Свободные часы в рабочий день</td>
+                            <td>
+                                <output class="answer" id="answer-workday-free-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Свободные часы в неделю <span class="extended-description">(с учётом сна, рабочих и
+                                    выходных дней)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-week-free-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Свободные часы в месяц
+                                <span class="extended-description">(с учётом сна, рабочих и
+                                    выходных дней)</span>
+                            </td>
+                            <td>
+                                <output class="answer" id="answer-month-free-hours"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Время бодрствования</td>
+                            <td>
+                                <output class="answer" id="answer-hours-active"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Время сна</td>
+                            <td>
+                                <output class="answer" id="answer-hours-sleep"></output>
+                                <span id="units" hidden class="units">ч.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="settings">
+                <h2>Исходные данные</h2>
+                <form name="calculator" action="index.html" method="post" id="calculator-form">
+                    <div class="form-container">
+                        <label>
+                            <span class=description>Пресет</span>
+                            <select id="preset-select">
+                                <option selected value="">Выбрать пресет</option>
+                                <option value="0">Офисный планктон</option>
+                                <option value="1">Работник общепита</option>
+                                <option value="2">Студент</option>
+                                <option value="3">Живу с мамой</option>
+                                <option value="4">Тунеядец</option>
+                            </select>
+                        </label>
+                        <div class="labeled">
+                            <span class=description>Ставка - </span>
+                            <div class="slider">
+                                <output id="salary-output">0</output>
+                                <input type="range" id="salary" min="0" max="15" step="0.25" value="0"
+                                    name="calculator">
+                            </div>
+                        </div>
+                        <label>
+                            <span class=description>С учётом НДФЛ -
+                                <span class="extended-description">13%</span>
+                            </span>
+                            <input type="checkbox" checked id="tax" name="calculator">
+                        </label>
+                        <label>
+                            <span class=description>Рабочие часы -</span>
+                            <input type="number" min="0" max="12" placeholder="0" id="hours" name="calculator">
+                        </label>
+                        <label>
+                            <span class=description>Рабочие дни -</span>
+                            <input type="number" min="0" max="7" placeholder="0" id="days" name="calculator">
+                        </label>
+                        <label>
+                            <span class=description>Неоплачиваемые часы -
+                                <span class="extended-description">(обед, дорога, пр.)</span>
+                            </span>
+                            <input type="number" id="non-paid-hours" min="0" max="24" placeholder="0" name="calculator">
+                        </label>
+                        <label>
+                            <span class=description>Премия (в мес.) -
+                                <span class="extended-description">(процент от продаж, чаевые, пр.)</span>
+                            </span>
+                            <input type="number" id="bonus" min="0" max="2000" placeholder="0" name="calculator">
+                        </label>
+                        <label>
+                            <span class=description>Штрафы (в мес.) -
+                                <span class="extended-description">(вычеты, просрочка, пр.)</span>
+                            </span>
+                            <input type="number" id="fine" min="0" max="2000" placeholder="0" name="calculator">
+                        </label>
+                        <label>
+                            <span class=description>Часы сна - </span>
+                            <input type="number" id="sleep-hours" min="0" max="14" placeholder="0" name="calculator">
+                        </label>
+                        <button type="submit" id="submit" name="calculator">Рассчитать</button>
+                    </div>
+                </form>
+                <div class="annotation">
+                    <p>*Рассчитанные значение являются приблизительными.</p>
+                    <p>**Значения рассчитываются исходя из допущений, что в месяце 31 день, и первым днём месяца
+                        является понедельник.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
