@@ -65,7 +65,7 @@ calculatorForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
     const salaryInteger = valToNum(salaryIntegerInput.value);
-    const salaryNonInteger = valToNum(salaryNonIntegerInput.value) / 100 || 0;
+    const salaryNonInteger = getNonIntegerNum(salaryNonIntegerInput.value);
     const salarySummarized = salaryInteger + salaryNonInteger;
 
     const workHours = valToNum(hoursInput.value);
@@ -323,4 +323,16 @@ const getFreeHoursPerWeek = (wakeHours, workHours, nonPaidHours, workDays) => {
 const getFreeHoursPerMonth = (wakeHours, workHours, nonPaidHours, workDays) => {
     const freeHoursPerWeek = getFreeHoursPerWeek(wakeHours, workHours, nonPaidHours, workDays)
     return Math.round(freeHoursPerWeek * weeksAtMont);
+};
+
+const getNonIntegerNum = value => {
+    if (value) {
+        switch (value.length) {
+            case 1:
+                return Number(value) / 10;
+            case 2:
+                return Number(value) / 100;
+        };
+    };
+    return 0;
 };
