@@ -135,7 +135,7 @@ let unitsHidden = true;
 calculatorForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (unitsHidden) {
-        const units = document.querySelectorAll("#units");
+        const units = document.querySelectorAll(".units");
         units.forEach(unit => {
             unit.hidden = false;
         });
