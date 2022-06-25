@@ -105,10 +105,29 @@ section.settings {
     padding: .5%;
 }
 
-.slider {
+.salary {
     display: flex;
-    flex-direction: column;
+    /* align-items: baseline; */
+}
+
+.salary label {
+    display: flex;
     align-items: flex-end;
+    /* justify-content: space-around; */
+}
+
+.salary label:nth-of-type(2) {
+    margin-left: 10px;
+}
+
+.salary input {
+    max-width: 50px !important;
+    min-width: 50px !important;
+    font-size: .9em;
+}
+
+.input-units {
+    font-size: .8em;
 }
 
 .form-container .extended-description {
