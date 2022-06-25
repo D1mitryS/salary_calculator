@@ -70,7 +70,7 @@ const taxCheckbox = document.querySelector("#tax");
 calculatorForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    const salary = valToNum(salaryInput.value)
+    const salary = valToNum(salaryInput.value);
     const workHours = valToNum(hoursInput.value);
     const workDays = valToNum(daysInput.value);
     const nonPaidHours = valToNum(nonPaidHoursInput.value);
@@ -135,8 +135,8 @@ calculatorForm.addEventListener("submit", (evt) => {
 /* Optimizes units display for table cells */
 let unitsHidden = true;
 
-calculatorForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
+calculatorForm.addEventListener("submit", (event) => {
+    event.preventDefault();
     if (unitsHidden) {
         const units = document.querySelectorAll("#units");
         units.forEach(unit => {
@@ -144,8 +144,8 @@ calculatorForm.addEventListener("submit", (evt) => {
         });
 
         unitsHidden = false;
-    }
-})
+    };
+});
 
 /* Gives input fields values from presets object array based on select value */
 const presetSelect = document.querySelector("#preset-select");
@@ -199,7 +199,7 @@ const presets = [{
     fine: 65,
     sleepHours: 8
 }
-]
+];
 
 presetSelect.addEventListener("change", () => {
     if (presetSelect.value) {
@@ -213,32 +213,32 @@ presetSelect.addEventListener("change", () => {
         bonusInput.value = presets[presetNum].bonus;
         fineInput.value = presets[presetNum].fine;
         sleepHoursInput.value = presets[presetNum].sleepHours;
-    }
-})
+    };
+});
 
 
 const valToNum = val => {
     return Number.parseInt(val, 10) || 0;
-}
+};
 
 
 /* Adds and removes 13% tax */
 const getUntaxed = num => {
     return num + ((num / 100) * nolog);
-}
+};
 const getTaxed = num => {
     return num - ((num / 100) * nolog);
-}
+};
 
 
 const getWakeHours = (hoursInDay, sleepHours) => {
     return hoursInDay - sleepHours;
-}
+};
 
 
 const getTotalBonus = (bonus, fine) => {
     return bonus - fine;
-}
+};
 
 
 const getSalaryPerDay = (salaryInHour, workHours) => {
