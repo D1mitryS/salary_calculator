@@ -275,10 +275,17 @@
                         </label>
                         <div class="labeled">
                             <span class=description>Ставка - </span>
-                            <div class="slider">
-                                <output id="salary-output">0</output>
-                                <input type="range" id="salary" min="0" max="15" step="1" value="0"
-                                    name="calculator">
+                            <div class="salary">
+                                <label>
+                                    <input type="number" id="salary-integer" min="0" max="100" step="1"
+                                        name="calculator" placeholder="0">
+                                    <span class="input-units">,</span>
+                                </label>
+                                <label>
+                                    <input type="number" id="salary-non-integer" min="0" max="99" step="1"
+                                        name="calculator" placeholder="00" title="Значение в сотых">
+                                    <span class="input-units">руб.</span>
+                                </label>
                             </div>
                         </div>
                         <label>
