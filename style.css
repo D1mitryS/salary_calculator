@@ -85,15 +85,15 @@ section.settings {
     background-color: #fff;
 }
 
-.form-container label, 
+.form-container > label, 
 .form-container .labeled {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: baseline;
 }
 
-.form-container label:nth-of-type(1) {
+.form-container > label:nth-of-type(1) {
     align-items: baseline;
     font-weight: bold;
     font-size: 1.1em;
