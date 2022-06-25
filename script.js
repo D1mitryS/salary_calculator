@@ -46,16 +46,10 @@ const daysInWeek = 7;
 const weeksAtMont = daysInMonth / daysInWeek;
 const nolog = 13;
 
-/* Slider input with visible output */
-const salaryInput = document.querySelector("#salary");
-const salaryOutput = document.querySelector("#salary-output");
-
-salaryInput.addEventListener("input", () => {
-    salaryOutput.textContent = salaryInput.value;
-});
-
-
+/* Input fields */
 const calculatorForm = document.querySelector('#calculator-form');
+const salaryIntegerInput = document.querySelector("#salary-integer");
+const salaryNonIntegerInput = document.querySelector("#salary-non-integer")
 const hoursInput = document.querySelector("#hours");
 const daysInput = document.querySelector("#days");
 const nonPaidHoursInput = document.querySelector("#non-paid-hours");
@@ -66,11 +60,14 @@ const sleepHoursInput = document.querySelector("#sleep-hours");
 /* Controls if salary value has to be passed to getUntaxed function */
 const taxCheckbox = document.querySelector("#tax");
 
-/* Transform values from input field to number and perform calculations  */
+/* Transform values from input fields to number and perform calculations  */
 calculatorForm.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    const salary = valToNum(salaryInput.value);
+    const salaryInteger = valToNum(salaryIntegerInput.value);
+    const salaryNonInteger = valToNum(salaryNonIntegerInput.value) / 100 || 0;
+    const salarySummarized = salaryInteger + salaryNonInteger;
+
     const workHours = valToNum(hoursInput.value);
     const workDays = valToNum(daysInput.value);
     const nonPaidHours = valToNum(nonPaidHoursInput.value);
@@ -82,33 +79,33 @@ calculatorForm.addEventListener("submit", (evt) => {
     const totalBonus = getTotalBonus(bonus, fine);
 
     /* All calculations are based on this const which depends on taxCheckbox value  */
-    const salaryComputed = (taxCheckbox.checked) ? salary : getTaxed(salary);
+    const salaryTaxed = (taxCheckbox.checked) ? salarySummarized : getTaxed(salarySummarized);
 
     /* First two cells gets it's text content directly from salary input field based on taxCheckbox value */
     if (taxCheckbox.checked) {
-        answerSaslaryPerHourTaxed.textContent = salary;
-        answerSalaryPerHourUntaxed.textContent = getUntaxed(salary)
+        answerSaslaryPerHourTaxed.textContent = salarySummarized;
+        answerSalaryPerHourUntaxed.textContent = getUntaxed(salarySummarized)
     } else {
-        answerSaslaryPerHourTaxed.textContent = getTaxed(salary);
-        answerSalaryPerHourUntaxed.textContent = salary;
+        answerSaslaryPerHourTaxed.textContent = getTaxed(salarySummarized);
+        answerSalaryPerHourUntaxed.textContent = salarySummarized;
     };
 
     /* Table cell gets text content from calling the functions with arguments stated above */
-    answerSalaryPerDay.textContent = getSalaryPerDay(salaryComputed, workHours);
-    answerSalaryPerWeek.textContent = getSalaryPerWeek(salaryComputed, workHours, workDays);
-    answerSalaryPerMonth.textContent = getSalaryPerMonth(salaryComputed, workHours, workDays);
+    answerSalaryPerDay.textContent = getSalaryPerDay(salaryTaxed, workHours);
+    answerSalaryPerWeek.textContent = getSalaryPerWeek(salaryTaxed, workHours, workDays);
+    answerSalaryPerMonth.textContent = getSalaryPerMonth(salaryTaxed, workHours, workDays);
 
-    answerTotalSalaryPerDay.textContent = getSalaryTotal(getSalaryPerDay(salaryComputed, workHours), getBonusPerDay(totalBonus, workDays));
-    answerTotalSalaryPerWeek.textContent = getSalaryTotal(getSalaryPerWeek(salaryComputed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
-    answerTotalSalaryPerMonth.textContent = getSalaryTotal(getSalaryPerMonth(salaryComputed, workHours, workDays), totalBonus);
+    answerTotalSalaryPerDay.textContent = getSalaryTotal(getSalaryPerDay(salaryTaxed, workHours), getBonusPerDay(totalBonus, workDays));
+    answerTotalSalaryPerWeek.textContent = getSalaryTotal(getSalaryPerWeek(salaryTaxed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
+    answerTotalSalaryPerMonth.textContent = getSalaryTotal(getSalaryPerMonth(salaryTaxed, workHours, workDays), totalBonus);
 
-    answerSalaryPerDayUntaxed.textContent = getSalaryUntaxed(getSalaryPerDay(salaryComputed, workHours));
-    answerSalaryPerWeekUntaxed.textContent = getSalaryUntaxed(getSalaryPerWeek(salaryComputed, workHours, workDays));
-    answerSalaryPerMonthUntaxed.textContent = getSalaryUntaxed(getSalaryPerMonth(salaryComputed, workHours, workDays));
+    answerSalaryPerDayUntaxed.textContent = getSalaryUntaxed(getSalaryPerDay(salaryTaxed, workHours));
+    answerSalaryPerWeekUntaxed.textContent = getSalaryUntaxed(getSalaryPerWeek(salaryTaxed, workHours, workDays));
+    answerSalaryPerMonthUntaxed.textContent = getSalaryUntaxed(getSalaryPerMonth(salaryTaxed, workHours, workDays));
 
-    answerTotalSalaryPerDayUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerDay(salaryComputed, workHours), getBonusPerDay(totalBonus, workDays));
-    answerTotalSalaryPerWeekUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerWeek(salaryComputed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
-    answerTotalSalaryPerMonthUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerMonth(salaryComputed, workHours, workDays), totalBonus);
+    answerTotalSalaryPerDayUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerDay(salaryTaxed, workHours), getBonusPerDay(totalBonus, workDays));
+    answerTotalSalaryPerWeekUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerWeek(salaryTaxed, workHours, workDays), getBonusPerWeek(totalBonus, workDays));
+    answerTotalSalaryPerMonthUntaxed.textContent = getSalaryTotalUntaxed(getSalaryPerMonth(salaryTaxed, workHours, workDays), totalBonus);
 
     answerWorkHoursPerDay.textContent = workHours;
     answerWorkHoursPerWeek.textContent = getWorkHoursPerWeek(workHours, workDays);
