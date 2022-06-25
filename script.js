@@ -148,7 +148,8 @@ calculatorForm.addEventListener("submit", (event) => {
 const presetSelect = document.querySelector("#preset-select");
 const presets = [{
     name: 'планктон',
-    salary: 5,
+    salaryInteger: 3,
+    salaryNonInteger: 5,
     workHours: 8,
     workDays: 5,
     nonPaid: 2,
@@ -158,27 +159,30 @@ const presets = [{
 },
 {
     name: 'общепит',
-    salary: 2,
+    salaryInteger: 2,
+    salaryNonInteger: 5,
     workHours: 12,
     workDays: 4,
     nonPaid: 2,
     bonus: 600,
     fine: 100,
-    sleepHours: 8
+    sleepHours: 6
 },
 {
     name: 'студент',
-    salary: 3,
+    salaryInteger: 2,
+    salaryNonInteger: 5,
     workHours: 6,
     workDays: 4,
     nonPaid: 1,
     bonus: 0,
     fine: 0,
-    sleepHours: 8
+    sleepHours: 6
 },
 {
     name: 'живу с мамой',
-    salary: 3,
+    salaryInteger: 2,
+    salaryNonInteger: 5,
     workHours: 4,
     workDays: 5,
     nonPaid: 1,
@@ -188,7 +192,8 @@ const presets = [{
 },
 {
     name: 'тунеядец',
-    salary: 0,
+    salaryInteger: 0,
+    salaryNonInteger: 0,
     workHours: 0,
     workDays: 0,
     nonPaid: 24,
@@ -202,8 +207,8 @@ presetSelect.addEventListener("change", () => {
     if (presetSelect.value) {
         const presetNum = valToNum(presetSelect.value);
 
-        salaryInput.value = presets[presetNum].salary;
-        salaryOutput.value = presets[presetNum].salary;
+        salaryIntegerInput.value = presets[presetNum].salaryInteger;
+        salaryNonIntegerInput.value = presets[presetNum].salaryNonInteger;
         hoursInput.value = presets[presetNum].workHours;
         daysInput.value = presets[presetNum].workDays;
         nonPaidHoursInput.value = presets[presetNum].nonPaid;
